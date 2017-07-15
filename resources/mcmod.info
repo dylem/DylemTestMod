@@ -1,0 +1,12 @@
+[
+{
+  "modid": "test_mod",
+  "name": "Dylem's Test Mod",
+  "description": "Dylem's mod for testing stuff",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "authors": [ "Dylem" ],
+  "credits": ""
+}
+]

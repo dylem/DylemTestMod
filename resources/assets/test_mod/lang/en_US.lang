@@ -1,0 +1,8 @@
+#ITEMS
+item.test_mod:item_basic.name=Basic Item
+item.test_mod:item_variants.a.name=A
+item.test_mod:item_variants.b.name=B
+item.test_mod:item_variants.c.name=C
+
+#CREATIVE TAB
+itemGroup.test_mod=Test Mod

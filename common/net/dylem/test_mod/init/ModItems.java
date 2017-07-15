@@ -138,6 +138,7 @@ public class ModItems {
 	    }
 	    private void registerItemModelForMeta(final Item item, final int metadata, final ModelResourceLocation modelResourceLocation) {
 	    	
+	    	System.out.println(modelResourceLocation.toString());
 	        ModelLoader.setCustomModelResourceLocation(item, metadata, modelResourceLocation);
 	    }
 	}

@@ -1,6 +1,7 @@
 package net.dylem.test_mod.item;
 
 import net.dylem.test_mod.util.IVariant;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.text.TextFormatting;
 
@@ -30,7 +31,7 @@ public enum EnumVariant implements IVariant {
 		this.meta = metaIn;
 		this.name = nameIn;
 		this.chatColor = chatColorIn;
-    }
+    } 
 	
 	/*
 	 * Retourne la meta de la variante
@@ -65,4 +66,10 @@ public enum EnumVariant implements IVariant {
 
         return META_LOOKUP[meta];
     }
+	
+	 static {
+	        for (EnumVariant enumType : values()) {
+	            META_LOOKUP[enumType.getMeta()] = enumType;
+	        }
+	    }
 }

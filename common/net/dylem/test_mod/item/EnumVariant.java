@@ -10,7 +10,7 @@ import net.minecraft.util.text.TextFormatting;
  */
 public enum EnumVariant implements IVariant {
 	
-	// Le nom correspond à l'unlocalized name de la variante
+	// Le nom correspond à la deuxième partie de l'unlocalized name de la variante
 	a(0, "a", TextFormatting.BLUE),
 	b(1, "b", TextFormatting.WHITE),
 	c(2, "c", TextFormatting.RED);

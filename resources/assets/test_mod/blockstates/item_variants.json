@@ -1,0 +1,25 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model": "test_mod:item/generated"
+    },
+    "variants": {
+        "test_mod:item_variants": {
+            "a": {
+                "textures": {
+                    "layer0": "test_mod:items/variants.a"
+                }
+            },
+            "b": {
+                "textures": {
+                    "layer0": "test_mod:items/variants.b"
+                }
+            },
+            "c": {
+                "textures": {
+                    "layer0": "test_mod:items/variants.c"
+                }
+            }
+        }
+    }
+}

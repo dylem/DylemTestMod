@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
@@ -124,22 +125,29 @@ public class ModItems {
 	        ModelLoader.setCustomMeshDefinition(item, meshDefinition);
 		}
 		
-		private <T extends IVariant> void registerVariantItemModels(final Item item, final String variantName, final T[] values) {
+		/*
+		 * Enregistre les modèles d'un item avec variantes
+		 * @Param item L'item
+		 * @Param modelLocation le nom de l'item dans le registre
+		 * @Param values les variantes de l'item
+		 */
+		private <T extends IVariant> void registerVariantItemModels(final Item item, final String modelLocation, final T[] values) {
 			
 			for (final T value : values) {
-				registerItemModelForMeta(item, value.getMeta(), variantName + "_" + value.getName());
+				registerItemModelForMeta(item, value.getMeta(), modelLocation + "=" + value.getName());
 			}
 		}
 
-		
-		private void registerItemModelForMeta(final Item item, final int metadata, final String variant) {
+		/*
+		 * Rengistre la variante d'un item
+		 * @Param item L'item
+		 * @Param metadata la meta de la variante
+		 * @Param variantLocation la localisation de la variante
+		 */
+		private void registerItemModelForMeta(final Item item, final int metadata, final String variantLocation) {
 			
-	        registerItemModelForMeta(item, metadata, new ModelResourceLocation(item.getRegistryName(), variant));
-	    }
-	    private void registerItemModelForMeta(final Item item, final int metadata, final ModelResourceLocation modelResourceLocation) {
-	    	
-	    	System.out.println(modelResourceLocation.toString());
-	        ModelLoader.setCustomModelResourceLocation(item, metadata, modelResourceLocation);
+	        ModelResourceLocation location = new ModelResourceLocation(item.getRegistryName(), variantLocation);
+	        ModelLoader.setCustomModelResourceLocation(item, metadata, location);
 	    }
 	}
 }

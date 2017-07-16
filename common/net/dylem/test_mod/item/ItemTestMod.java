@@ -24,14 +24,6 @@ public class ItemTestMod extends Item {
 	private void setItemName(final String itemName) {
 	    
 		setRegistryName(TestMod.MOD_ID, itemName);
-		setUnlocalizedName(getStringRegistryName());
-	}
-	
-	/*
-	 * Transforme le nom dans le registre en String
-	 */
-	public String getStringRegistryName() {
-		
-		return this.getRegistryName().toString();
+		setUnlocalizedName(getRegistryName().toString());
 	}
 }

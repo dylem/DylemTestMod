@@ -25,7 +25,9 @@ public class ItemVariants extends ItemTestMod implements IVariant.IItemVariant {
 	 * Retourne l'unlocalized name correspondant à la variante
 	 * @Param stack l'ItemStack
 	 * @Return la variante correspondant à stack
+	 * @see net.minecraft.item.Item#getUnlocalizedName(net.minecraft.item.ItemStack)
 	 */
+	
 	@Override
 	 public String getUnlocalizedName(ItemStack stack) {
 		
@@ -37,6 +39,7 @@ public class ItemVariants extends ItemTestMod implements IVariant.IItemVariant {
 	 * Permet de récupérer les items des variantes
 	 * @Param tab (CreativeTabs)
 	 * @Param subItems les variantes
+	 * @see net.minecraft.item.Item#getSubItems(net.minecraft.creativetab.CreativeTabs, net.minecraft.util.NonNullList)
 	 */
 	@SideOnly(Side.CLIENT)
 	@Override
@@ -49,6 +52,9 @@ public class ItemVariants extends ItemTestMod implements IVariant.IItemVariant {
 		subItems.addAll(items);
 	}
 	
+	/*
+	 * @see net.dylem.test_mod.util.IVariant.IItemVariant#getValues()
+	 */
 	@Override
 	public EnumVariant[] getValues() {
 		

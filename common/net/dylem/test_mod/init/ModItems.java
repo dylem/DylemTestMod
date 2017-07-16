@@ -2,7 +2,7 @@ package net.dylem.test_mod.init;
 
 import java.util.HashSet;
 
-import net.dylem.test_mod.item.ItemBasic;
+import net.dylem.test_mod.item.ItemTestMod;
 import net.dylem.test_mod.item.ItemVariants;
 import net.dylem.test_mod.util.IVariant;
 import net.dylem.test_mod.util.client.renderer.MeshDefinitionFix;
@@ -23,7 +23,10 @@ import net.minecraftforge.registries.IForgeRegistry;
  */
 public class ModItems {
 	
-	public static final ItemBasic ITEM_BASIC = new ItemBasic("item_basic");
+	// Item de base ne faisant rien, avec un joli Kappa comme texture
+	public static final ItemTestMod ITEM_BASIC = new ItemTestMod("item_basic");
+	
+	// Item à trois variantes, les lettres A, B et C
 	public static final ItemVariants ITEM_VARIANTS = new ItemVariants("item_variants");
 	
 	/*

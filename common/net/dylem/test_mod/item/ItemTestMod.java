@@ -34,15 +34,4 @@ public class ItemTestMod extends Item {
 		
 		return this.getRegistryName().toString();
 	}
-	
-	/*
-	 * Permet de récuperer les valeurs pour les items avec meta
-	 * Utilisé par :
-	 * ModItems.ModelHandler.registerItemModel(ItemTestMod, String)
-	 * @Return le tableau comprenant toutes les valeurs
-	 */
-	public <T extends IVariant> T[] getValues() {
-		
-		return null;
-	}
 }

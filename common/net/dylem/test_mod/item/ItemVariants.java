@@ -1,14 +1,12 @@
 package net.dylem.test_mod.item;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import net.dylem.test_mod.util.IVariant;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -16,7 +14,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 /*
  * item avec plusieurs variantes
  */
-public class ItemVariants extends ItemTestMod {
+public class ItemVariants extends ItemTestMod implements IVariant.IItemVariant {
 	
 	public ItemVariants(final String itemName) {
 		

@@ -3,7 +3,6 @@ package net.dylem.test_mod.init;
 import java.util.HashSet;
 
 import net.dylem.test_mod.item.ItemBasic;
-import net.dylem.test_mod.item.ItemTestMod;
 import net.dylem.test_mod.item.ItemVariants;
 import net.dylem.test_mod.util.IVariant;
 import net.dylem.test_mod.util.client.renderer.MeshDefinitionFix;
@@ -11,7 +10,6 @@ import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
@@ -32,7 +30,7 @@ public class ModItems {
 	 * Contient tous les items enregistrés
 	 * HashSet -> pas de doublons
 	 */
-	public static final HashSet<ItemTestMod> REGISTERED_ITEMS = new HashSet();
+	public static final HashSet<Item> REGISTERED_ITEMS = new HashSet();
 	
 	/* 
 	 * Enregistre les items
@@ -49,7 +47,7 @@ public class ModItems {
 		public static void registerItems(final RegistryEvent.Register<Item> event) {
 			
 			// Contient tous les items du mod, pas encore enregistrés
-			final ItemTestMod[] items = {
+			final Item[] items = {
 				ITEM_BASIC,	
 				ITEM_VARIANTS,
 			};
@@ -60,7 +58,7 @@ public class ModItems {
 			 * Pour chaque item, on l'enregistre à l'aide de l'évènement
 			 * Puis on l'ajoute au set d'item enregistrés, pour plus tard enregistrer son modèle
 			 */
-			for(final ItemTestMod item : items) {
+			for(final Item item : items) {
 				registry.register(item);
 				REGISTERED_ITEMS.add(item);
 			}
@@ -83,24 +81,27 @@ public class ModItems {
 		@SubscribeEvent
 		public static void registerItemModels(final ModelRegistryEvent event) {
 			
-			REGISTERED_ITEMS.forEach(item -> INSTANCE.registerItemModel(item, item.getStringRegistryName()));
-		}
-		
-		/*
-		 * Enregistre le modèle d'un item
-		 * Etape 1 : Transforme le paramètre modelLocation en localisation complète de l'item
-		 * @Param item L'item
-		 * @Param modelLocation Le nom de l'item dans le registre
-		 */
-		private void registerItemModel(final ItemTestMod item, final String modelLocation) {
-			
-			if(item.getValues() != null) {
-				registerVariantItemModels(item, modelLocation, item.getValues());
-			}
-			else {
-				final ModelResourceLocation fullModelLocation = new ModelResourceLocation(modelLocation, "inventory");
-		        registerItemModel(item, fullModelLocation);
-			}
+			/*
+			 * Pour chaque item enregistré
+			 */
+			REGISTERED_ITEMS.forEach(item -> {
+				
+				final String modelLocation = item.getRegistryName().toString();
+				
+				/*
+				 * Si l'item possède des variantes
+				 */
+				if(item instanceof IVariant.IItemVariant) {
+					
+					IVariant.IEnumVariant values [] = ((IVariant.IItemVariant)item).getValues();
+					INSTANCE.registerVariantItemModels(item, modelLocation, values);
+				}
+				else {
+					
+					final ModelResourceLocation fullModelLocation = new ModelResourceLocation(modelLocation, "inventory");
+			        INSTANCE.registerItemModel(item, fullModelLocation);
+				}
+			});
 		}
 		
 		/*
@@ -109,7 +110,7 @@ public class ModItems {
 		 * @Param item L'item
 		 * @Param modelLocation la localisation complète de l'item
 		 */
-		private void registerItemModel(final ItemTestMod item, final ModelResourceLocation fullModelLocation) {
+		private void registerItemModel(final Item item, final ModelResourceLocation fullModelLocation) {
 			
 			ModelBakery.registerItemVariants(item, fullModelLocation);
 			registerItemModel(item, MeshDefinitionFix.create(stack -> fullModelLocation));
@@ -120,7 +121,7 @@ public class ModItems {
 		 * @Param item L'item
 		 * @Param meshDefinition la meshDefinition de l'item
 		 */
-		private void registerItemModel(final ItemTestMod item, final ItemMeshDefinition meshDefinition) {
+		private void registerItemModel(final Item item, final ItemMeshDefinition meshDefinition) {
 			
 	        ModelLoader.setCustomMeshDefinition(item, meshDefinition);
 		}
@@ -131,7 +132,7 @@ public class ModItems {
 		 * @Param modelLocation le nom de l'item dans le registre
 		 * @Param values les variantes de l'item
 		 */
-		private <T extends IVariant> void registerVariantItemModels(final Item item, final String modelLocation, final T[] values) {
+		private <T extends IVariant.IEnumVariant> void registerVariantItemModels(final Item item, final String modelLocation, final T[] values) {
 			
 			for (final T value : values) {
 				registerItemModelForMeta(item, value.getMeta(), modelLocation + "=" + value.getName());

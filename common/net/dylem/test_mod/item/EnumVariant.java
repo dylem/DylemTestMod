@@ -8,7 +8,7 @@ import net.minecraft.util.text.TextFormatting;
 /*
  * Lié à ItemVariants, contenant ses variantes
  */
-public enum EnumVariant implements IVariant {
+public enum EnumVariant implements IVariant.IEnumVariant {
 	
 	// Le nom correspond à la deuxième partie de l'unlocalized name de la variante
 	a(0, "a", TextFormatting.BLUE),

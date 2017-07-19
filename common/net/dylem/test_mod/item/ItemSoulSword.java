@@ -44,6 +44,9 @@ public class ItemSoulSword extends ItemSword implements IVariant.IItemVariant {
 		
 		ItemTestMod.setItemName(this, itemName);
 		setCreativeTab(TestMod.TEST_TAB);
+		
+		// Les damages de l'Item sont déjà utilisés par la metadata
+		this.setMaxDamage(-1);
 	}
 	
 	/*

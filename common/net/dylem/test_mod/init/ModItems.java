@@ -2,6 +2,7 @@ package net.dylem.test_mod.init;
 
 import java.util.HashSet;
 
+import net.dylem.test_mod.item.ItemSoulSword;
 import net.dylem.test_mod.item.ItemTestMod;
 import net.dylem.test_mod.item.ItemVariants;
 import net.dylem.test_mod.util.IVariant;
@@ -29,6 +30,9 @@ public class ModItems {
 	// Item à trois variantes, les lettres A, B et C
 	public static final ItemVariants ITEM_VARIANTS = new ItemVariants("item_variants");
 	
+	// Une épée qui garde les ames des énemis en mémoire, la rendant plus puissante
+	public static final ItemSoulSword SOUL_SWORD = new ItemSoulSword(Item.ToolMaterial.DIAMOND, "soul_sword");
+	
 	/*
 	 * Contient tous les items enregistrés
 	 * HashSet -> pas de doublons
@@ -53,6 +57,7 @@ public class ModItems {
 			final Item[] items = {
 				ITEM_BASIC,	
 				ITEM_VARIANTS,
+				SOUL_SWORD,
 			};
 			
 			final IForgeRegistry<Item> registry = event.getRegistry();
@@ -84,20 +89,18 @@ public class ModItems {
 		@SubscribeEvent
 		public static void registerItemModels(final ModelRegistryEvent event) {
 			
-			/*
-			 * Pour chaque item enregistré
-			 */
-			REGISTERED_ITEMS.forEach(item -> {
+			REGISTERED_ITEMS.forEach(item -> { // Pour chaque Item enregistré, ..
 				
 				final String modelLocation = item.getRegistryName().toString();
 				
-				/*
-				 * Si l'item possède des variantes
-				 */
+				// S'il possède des variantes
 				if(item instanceof IVariant.IItemVariant) {
 					
-					IVariant.IEnumVariant values [] = ((IVariant.IItemVariant)item).getValues();
-					INSTANCE.registerVariantItemModels(item, modelLocation, values);
+					IVariant.IEnumVariant values[] = ((IVariant.IItemVariant)item).getValues();
+					
+					if(values != null) {
+						INSTANCE.registerVariantItemModels(item, modelLocation, values);
+					}
 				}
 				else {
 					

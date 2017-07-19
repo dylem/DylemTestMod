@@ -1,21 +1,17 @@
 package net.dylem.test_mod.item;
 
 import net.dylem.test_mod.util.IVariant;
-import net.minecraft.item.EnumDyeColor;
-import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.text.TextFormatting;
 
-/*
- * Lié à ItemVariants, contenant ses variantes
- */
-public enum EnumVariant implements IVariant.IEnumVariant {
-	
+public enum EnumSoulSword implements IVariant.IEnumVariant {
+
 	// Le nom correspond à la deuxième partie de l'unlocalized name de la variante
-	a(0, "a", TextFormatting.BLUE),
-	b(1, "b", TextFormatting.WHITE),
-	c(2, "c", TextFormatting.RED);
+	COMMON(0, "common", TextFormatting.WHITE),
+	RARE(1, "rare", TextFormatting.BLUE),
+	EPIC(2, "epic", TextFormatting.DARK_PURPLE),
+	LEGENDARY(3, "legendary", TextFormatting.YELLOW);
 	
-	private static final EnumVariant[] META_LOOKUP = new EnumVariant[values().length];
+	private static final EnumSoulSword[] META_LOOKUP = new EnumSoulSword[values().length];
 	private final int meta;
     private final String name;
     private final TextFormatting chatColor;
@@ -26,7 +22,7 @@ public enum EnumVariant implements IVariant.IEnumVariant {
      * @Param nameIn le nom
      * @Param chatColorIn la couleur du texte
      */
-	private EnumVariant(int metaIn, String nameIn, TextFormatting chatColorIn) {
+	private EnumSoulSword(int metaIn, String nameIn, TextFormatting chatColorIn) {
 		
 		this.meta = metaIn;
 		this.name = nameIn;
@@ -58,7 +54,7 @@ public enum EnumVariant implements IVariant.IEnumVariant {
 	 * @Param la meta à chercher
 	 * @return A, B ou C en fonction de la meta
 	 */
-	public static EnumVariant byMetadata(int meta)
+	public static EnumSoulSword byMetadata(int meta)
     {
         if (meta < 0 || meta >= META_LOOKUP.length) {
             meta = 0;
@@ -68,8 +64,9 @@ public enum EnumVariant implements IVariant.IEnumVariant {
     }
 	
 	 static {
-	        for (EnumVariant enumType : values()) {
+	        for (EnumSoulSword enumType : values()) {
 	            META_LOOKUP[enumType.getMeta()] = enumType;
 	        }
 	    }
+
 }

@@ -4,5 +4,10 @@ item.test_mod:item_variants.a.name=A
 item.test_mod:item_variants.b.name=B
 item.test_mod:item_variants.c.name=C
 
+item.test_mod:soul_sword.common.name=Soul Sword
+item.test_mod:soul_sword.rare.name=Soul Sword (Rare)
+item.test_mod:soul_sword.epic.name=Soul Sword (Epic)
+item.test_mod:soul_sword.legendary.name=Soul Sword (Legendary)
+
 #CREATIVE TAB
 itemGroup.test_mod=Test Mod

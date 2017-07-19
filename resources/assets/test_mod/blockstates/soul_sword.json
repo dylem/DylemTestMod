@@ -1,0 +1,30 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model": "test_mod:item/handheld"
+    },
+    "variants": {
+        "test_mod:soul_sword": {
+            "common": {
+                "textures": {
+                    "layer0": "test_mod:items/soul_sword"
+                }
+            },
+            "rare": {
+                "textures": {
+                    "layer0": "test_mod:items/soul_sword.rare"
+                }
+            },
+            "epic": {
+                "textures": {
+                    "layer0": "test_mod:items/soul_sword.epic"
+                }
+            },
+            "legendary": {
+                "textures": {
+                    "layer0": "test_mod:items/soul_sword.legendary"
+                }
+            }
+        }
+    }
+}

@@ -12,18 +12,20 @@ public class ItemTestMod extends Item {
 	
 	public ItemTestMod(final String itemName) {
 	    
-		setItemName(itemName);
+		setItemName(this, itemName);
 		setCreativeTab(TestMod.TEST_TAB);
 	}
 	
 	/*
 	 * Définit le nom dans le registre
 	 * Définit l'unlocalized name
+	 * @Param item L'item, de sorte que la fonction puisse être utilisée par
+	 * des items qui n'étendent pas ItemTestMod
 	 * @Param itemName le nom de l'item
 	 */
-	private void setItemName(final String itemName) {
+	static void setItemName(final Item item, final String itemName) {
 	    
-		setRegistryName(TestMod.MOD_ID, itemName);
-		setUnlocalizedName(getRegistryName().toString());
+		item.setRegistryName(TestMod.MOD_ID, itemName);
+		item.setUnlocalizedName(item.getRegistryName().toString());
 	}
 }

@@ -27,12 +27,11 @@ public class ItemVariants extends ItemTestMod implements IVariant.IItemVariant {
 	 * @Return la variante correspondant à stack
 	 * @see net.minecraft.item.Item#getUnlocalizedName(net.minecraft.item.ItemStack)
 	 */
-	
 	@Override
 	 public String getUnlocalizedName(ItemStack stack) {
 		
         int i = stack.getMetadata();
-        return super.getUnlocalizedName() + "." + EnumVariant.byMetadata(i).getName();
+        return super.getUnlocalizedName() + "." + EnumItemVariants.byMetadata(i).getName();
     }
 	
 	/*
@@ -45,7 +44,7 @@ public class ItemVariants extends ItemTestMod implements IVariant.IItemVariant {
 	@Override
 	public void getSubItems(final CreativeTabs tab, final NonNullList<ItemStack> subItems) {
 		
-		final List<ItemStack> items = Stream.of(EnumVariant.values())
+		final List<ItemStack> items = Stream.of(EnumItemVariants.values())
 				.map(enumType -> new ItemStack(this, 1, enumType.getMeta()))
 				.collect(Collectors.toList());
 
@@ -56,8 +55,8 @@ public class ItemVariants extends ItemTestMod implements IVariant.IItemVariant {
 	 * @see net.dylem.test_mod.util.IVariant.IItemVariant#getValues()
 	 */
 	@Override
-	public EnumVariant[] getValues() {
+	public EnumItemVariants[] getValues() {
 		
-		return EnumVariant.values();
+		return EnumItemVariants.values();
 	}
 }

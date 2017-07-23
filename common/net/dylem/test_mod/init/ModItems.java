@@ -3,6 +3,7 @@ package net.dylem.test_mod.init;
 import java.util.HashSet;
 
 import net.dylem.test_mod.item.ItemSoulSword;
+import net.dylem.test_mod.item.ItemTeleportationTotem;
 import net.dylem.test_mod.item.ItemTestMod;
 import net.dylem.test_mod.item.ItemVariants;
 import net.dylem.test_mod.util.IVariant;
@@ -26,6 +27,9 @@ public class ModItems {
 	
 	// Item de base ne faisant rien, avec un joli Kappa comme texture
 	public static final ItemTestMod ITEM_BASIC = new ItemTestMod("item_basic");
+	
+	// Un totem qui permet de se téléporter à une position enregistrée
+	public static final ItemTeleportationTotem TELEPORTATION_TOTEM = new ItemTeleportationTotem("teleportation_totem");
 	
 	// Item à trois variantes, les lettres A, B et C
 	public static final ItemVariants ITEM_VARIANTS = new ItemVariants("item_variants");
@@ -56,6 +60,7 @@ public class ModItems {
 			// Contient tous les items du mod, pas encore enregistrés
 			final Item[] items = {
 				ITEM_BASIC,	
+				TELEPORTATION_TOTEM,
 				ITEM_VARIANTS,
 				SOUL_SWORD,
 			};
@@ -129,7 +134,7 @@ public class ModItems {
 		 */
 		private void registerItemModel(final Item item, final ItemMeshDefinition meshDefinition) {
 			
-	        ModelLoader.setCustomMeshDefinition(item, meshDefinition);
+		    ModelLoader.setCustomMeshDefinition(item, meshDefinition);
 		}
 		
 		/*
@@ -144,7 +149,7 @@ public class ModItems {
 				registerItemModelForMeta(item, value.getMeta(), modelLocation + "=" + value.getName());
 			}
 		}
-
+		
 		/*
 		 * Rengistre la variante d'un item
 		 * @Param item L'item
@@ -153,8 +158,8 @@ public class ModItems {
 		 */
 		private void registerItemModelForMeta(final Item item, final int metadata, final String variantLocation) {
 			
-	        ModelResourceLocation location = new ModelResourceLocation(item.getRegistryName(), variantLocation);
-	        ModelLoader.setCustomModelResourceLocation(item, metadata, location);
-	    }
+		    ModelResourceLocation location = new ModelResourceLocation(item.getRegistryName(), variantLocation);
+		    ModelLoader.setCustomModelResourceLocation(item, metadata, location);
+		}
 	}
 }

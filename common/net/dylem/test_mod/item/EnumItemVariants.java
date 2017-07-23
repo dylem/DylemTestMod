@@ -1,23 +1,19 @@
 package net.dylem.test_mod.item;
 
 import net.dylem.test_mod.util.IVariant;
-import net.minecraft.item.EnumDyeColor;
-import net.minecraft.util.IStringSerializable;
-import net.minecraft.util.text.TextFormatting;
 
 /*
  * Lié à ItemVariants, contenant ses variantes
  */
 public enum EnumItemVariants implements IVariant.IEnumVariant {
 	
-	// Le nom correspond à la deuxième partie de l'unlocalized name de la variante
 	A(0, "a"),
 	B(1, "b"),
 	C(2, "c");
 	
 	private static final EnumItemVariants[] META_LOOKUP = new EnumItemVariants[values().length];
 	private final int meta;
-    private final String name;
+    private final String name; // Le nom correspond à la deuxième partie de l'unlocalized name de la variante
     
     /*
      * Crée une nouvelle variante
@@ -56,8 +52,8 @@ public enum EnumItemVariants implements IVariant.IEnumVariant {
 	 * @Param la meta à chercher
 	 * @return A, B ou C en fonction de la meta
 	 */
-	public static EnumItemVariants byMetadata(int meta)
-    {
+	public static EnumItemVariants byMetadata(int meta){
+		
         if (meta < 0 || meta >= META_LOOKUP.length) {
             meta = 0;
         }
@@ -66,8 +62,9 @@ public enum EnumItemVariants implements IVariant.IEnumVariant {
     }
 	
 	 static {
-	        for (EnumItemVariants enumType : values()) {
-	            META_LOOKUP[enumType.getMeta()] = enumType;
-	        }
-	    }
+		 
+        for (EnumItemVariants enumType : values()) {
+            META_LOOKUP[enumType.getMeta()] = enumType;
+        }
+    }
 }

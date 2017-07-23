@@ -45,8 +45,8 @@ public class ItemVariants extends ItemTestMod implements IVariant.IItemVariant {
 	public void getSubItems(final CreativeTabs tab, final NonNullList<ItemStack> subItems) {
 		
 		final List<ItemStack> items = Stream.of(EnumItemVariants.values())
-				.map(enumType -> new ItemStack(this, 1, enumType.getMeta()))
-				.collect(Collectors.toList());
+				.map(enumType -> new ItemStack(this, 1, enumType.getMeta())) // Pour chaque variante, on crée un itemstack en fonction de sa meta
+				.collect(Collectors.toList()); // Et on les mets dans une liste
 
 		subItems.addAll(items);
 	}

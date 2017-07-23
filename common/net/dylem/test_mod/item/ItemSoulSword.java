@@ -1,9 +1,7 @@
 	package net.dylem.test_mod.item;
 
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -14,7 +12,6 @@ import com.google.common.collect.Multimap;
 
 import net.dylem.test_mod.TestMod;
 import net.dylem.test_mod.util.IVariant;
-import net.dylem.test_mod.util.IVariant.IEnumVariant;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;

@@ -6,15 +6,14 @@ import net.minecraft.util.text.TextFormatting;
 public enum EnumSoulSword implements IVariant.IEnumVariant {
 
 	// Le nom correspond à la deuxième partie de l'unlocalized name de la variante
-	COMMON(0, "common", TextFormatting.WHITE),
-	RARE(1, "rare", TextFormatting.BLUE),
-	EPIC(2, "epic", TextFormatting.DARK_PURPLE),
-	LEGENDARY(3, "legendary", TextFormatting.YELLOW);
+	COMMON(0, "common"),
+	RARE(1, "rare"),
+	EPIC(2, "epic"),
+	LEGENDARY(3, "legendary");
 	
 	private static final EnumSoulSword[] META_LOOKUP = new EnumSoulSword[values().length];
 	private final int meta;
     private final String name;
-    private final TextFormatting chatColor;
     
     /*
      * Crée une nouvelle variante
@@ -22,11 +21,10 @@ public enum EnumSoulSword implements IVariant.IEnumVariant {
      * @Param nameIn le nom
      * @Param chatColorIn la couleur du texte
      */
-	private EnumSoulSword(int metaIn, String nameIn, TextFormatting chatColorIn) {
+	private EnumSoulSword(int metaIn, String nameIn) {
 		
 		this.meta = metaIn;
 		this.name = nameIn;
-		this.chatColor = chatColorIn;
     } 
 	
 	/*
